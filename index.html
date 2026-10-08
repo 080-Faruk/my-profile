@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mohammad Faruq | Tech Profile</title>
+
+    <meta name="description"
+          content="Profil Mohammad Faruq, mahasiswa Teknik Informatika UNIRA.">
+
+    <style>
+        /* =========================
+           RESET
+        ========================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #07111f;
+            --bg-secondary: #0b1728;
+            --card: rgba(15, 31, 52, 0.85);
+            --text: #e8f0f7;
+            --text-secondary: #9fb0c3;
+            --primary: #00e5ff;
+            --secondary: #7c3aed;
+            --border: rgba(0, 229, 255, 0.25);
+            --shadow: rgba(0, 229, 255, 0.12);
+        }
+
+        body.light {
+            --bg: #f4f8fb;
+            --bg-secondary: #ffffff;
+            --card: #ffffff;
+            --text: #172033;
+            --text-secondary: #5b6778;
+            --primary: #0077b6;
+            --secondary: #6d28d9;
+            --border: rgba(0, 119, 182, 0.2);
+            --shadow: rgba(0, 119, 182, 0.12);
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            transition: 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* =========================
+           GRID BACKGROUND
+        ========================== */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 229, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, 0.035) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: rgba(0, 229, 255, 0.07);
+            filter: blur(100px);
+            border-radius: 50%;
+            top: -150px;
+            right: -150px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(7, 17, 31, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        body.light nav {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--text);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .theme-btn {
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text);
+            padding: 7px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .theme-btn:hover {
+            background: var(--primary);
+            color: #001018;
+        }
+
+        /* =========================
+           GENERAL
+        ========================== */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title .terminal-label {
+            color: var(--primary);
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding-top: 70px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .terminal-text {
+            color: var(--primary);
+            font-family: Consolas, monospace;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 7vw, 72px);
+            line-height: 1.05;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+            text-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+        }
+
+        .hero-description {
+            color: var(--text-secondary);
+            max-width: 650px;
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 18px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #2563eb);
+            color: #001018;
+            border: none;
+        }
+
+        .btn-secondary {
+            color: var(--text);
+            background: var(--card);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .profile-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-card {
+            width: 280px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            background: var(--card);
+            box-shadow: 0 20px 60px var(--shadow);
+            text-align: center;
+        }
+
+        .profile-card img {
+            width: 210px;
+            height: 210px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: auto;
+            border: 5px solid var(--primary);
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.25);
+        }
+
+        .profile-card h3 {
+            margin-top: 18px;
+        }
+
+        .profile-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* =========================
+           TERMINAL
+        ========================== */
+        .terminal {
+            background: #050b13;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .terminal-header {
+            padding: 12px 15px;
+            border-bottom: 1px solid #1c3045;
+            display: flex;
+            gap: 7px;
+        }
+
+        .dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #64748b;
+        }
+
+        .terminal-body {
+            padding: 22px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+
+        .terminal-body .green {
+            color: #4ade80;
+        }
+
+        .terminal-body .cyan {
+            color: #22d3ee;
+        }
+
+        .terminal-body .purple {
+            color: #c084fc;
+        }
+
+        /* =========================
+           CARDS
+        ========================== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+
+        .card-icon {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+        }
+
+        /* =========================
+           IDENTITAS
+        ========================== */
+        .identity-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .identity-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 13px 0;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .identity-item:last-child {
+            border-bottom: none;
+        }
+
+        .identity-item strong {
+            color: var(--primary);
+        }
+
+        /* =========================
+           EDUCATION
+        ========================== */
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            color: var(--primary);
+            background: rgba(0, 229, 255, 0.05);
+        }
+
+        td {
+            color: var(--text-secondary);
+        }
+
+        /* =========================
+           SKILLS
+        ========================== */
+        .skills {
+            display: grid;
+            gap: 18px;
+        }
+
+        .skill-head {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 7px;
+        }
+
+        .skill-head span:last-child {
+            color: var(--primary);
+            font-size: 13px;
+        }
+
+        .progress {
+            height: 9px;
+            background: rgba(148, 163, 184, 0.15);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+        }
+
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 25px;
+        }
+
+        .badge {
+            padding: 6px 11px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            color: var(--primary);
+            background: rgba(0, 229, 255, 0.05);
+            font-size: 13px;
+        }
+
+        /* =========================
+           PROJECT
+        ========================== */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: "</>";
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-family: Consolas, monospace;
+            font-size: 50px;
+            color: rgba(0, 229, 255, 0.05);
+        }
+
+        .project-info {
+            display: grid;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .project-info span {
+            color: var(--text-secondary);
+        }
+
+        .project-info strong {
+            color: var(--primary);
+        }
+
+        /* =========================
+           MOTIVATION
+        ========================== */
+        .quote-box {
+            border-left: 4px solid var(--primary);
+            padding: 25px;
+            background: var(--card);
+            border-radius: 0 15px 15px 0;
+        }
+
+        .quote-box p {
+            font-size: 19px;
+            color: var(--text-secondary);
+        }
+
+        /* =========================
+           COMMIT
+        ========================== */
+        .commit-title {
+            margin-bottom: 15px;
+        }
+
+        .commit-line {
+            margin-bottom: 8px;
+        }
+
+        .commit-hash {
+            color: #facc15;
+        }
+
+        .commit-message {
+            color: #4ade80;
+        }
+
+        /* =========================
+           CONTACT
+        ========================== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .contact-card {
+            text-align: center;
+        }
+
+        .contact-card a {
+            color: var(--primary);
+            word-break: break-word;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 35px 20px;
+            text-align: center;
+            background: var(--bg-secondary);
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            padding: 7px 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            background: var(--primary);
+            color: #001018;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+        @media (max-width: 800px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-wrapper {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 500px) {
+            section {
+                padding: 55px 0;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-top: 50px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .section-title h2 {
+                font-size: 27px;
+            }
+
+            .profile-card {
+                width: 230px;
+            }
+
+            .profile-card img {
+                width: 170px;
+                height: 170px;
+            }
+
+            .identity-item {
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                &lt;<span>Faruq</span>/&gt;
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#identitas">Identitas</a></li>
+                <li><a href="#pendidikan">Pendidikan</a></li>
+                <li><a href="#skill">Skill</a></li>
+                <li><a href="#proyek">Proyek</a></li>
+                <li><a href="#commit">Commit</a></li>
+            </ul>
+
+            <button class="theme-btn" onclick="toggleTheme()">
+                🌙 / ☀️
+            </button>
+        </div>
+    </nav>
+
+
+    <!-- =========================
+         1. HERO / PROFIL
+    ========================== -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+
+                <div>
+                    <div class="terminal-text">
+                        $ whoami
+                    </div>
+
+                    <h1>
+                        Mohammad <span>Faruq</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Mahasiswa Teknik Informatika Universitas Madura (UNIRA)
+                        yang sedang belajar dan mengembangkan kemampuan di bidang
+                        teknologi, pemrograman, dan pengembangan sistem informasi.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#identitas" class="btn btn-primary">
+                            👤 Tentang Saya
+                        </a>
+
+                        <a href="https://github.com/080-Faruk"
+                           target="_blank"
+                           class="btn btn-secondary">
+                            💻 GitHub
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="profile-wrapper">
+                    <div class="profile-card">
+
+                        <!--
+                            GANTI profile.jpg dengan foto kamu.
+                            Simpan foto di:
+                            biodata/assets/profile.jpg
+                        -->
+                        <img src="/biodata/profil.jpg" alt="Foto profil Mohammad Faruq">
+
+                        <h3>Mohammad Faruq</h3>
+
+                        <p>
+                            Informatika • UNIRA
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         2. IDENTITAS PRIBADI
+    ========================== -->
+    <section id="identitas">
+        <div class="container">
+
+            <div class="section-title">
+                <div class="terminal-label">$ cat identitas.txt</div>
+                <h2>Identitas Pribadi</h2>
+                <p>Informasi singkat tentang diri saya.</p>
+            </div>
+
+            <div class="card">
+
+                <div class="identity-list">
+
+                    <div class="identity-item">
+                        <strong>Nama Lengkap</strong>
+                        <span>Mohammad Faruq</span>
+                    </div>
+
+                    <div class="identity-item">
+                        <strong>Nama Panggilan</strong>
+                        <span>Faruq</span>
+                    </div>
+
+                    <div class="identity-item">
+                        <strong>NIM</strong>
+                        <span>202520080</span>
+                    </div>
+
+                    <div class="identity-item">
+                        <strong>Program Studi</strong>
+                        <span>Teknik Informatika</span>
+                    </div>
+
+                    <div class="identity-item">
+                        <strong>Perguruan Tinggi</strong>
+                        <span>Universitas Madura (UNIRA)</span>
+                    </div>
+
+                    <div class="identity-item">
+                        <strong>Lokasi</strong>
+                        <span>Pamekasan, Jawa Timur</span>
+                    </div>
+
+                    <div class="identity-item">
+                        <strong>Email</strong>
+                        <span>satpol913@gmail.com</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         3. TENTANG SAYA
+    ========================== -->
+    <section id="tentang">
+        <div class="container">
+
+            <div class="section-title">
+                <div class="terminal-label">$ nano tentang-saya.md</div>
+                <h2>Tentang Saya</h2>
+                <p>Gambaran singkat mengenai perjalanan saya.</p>
+            </div>
+
+            <div class="grid-2">
+
+                <div class="card">
+                    <div class="card-icon">💻</div>
+
+                    <h3>Mahasiswa Informatika</h3>
+
+                    <p>
+                        Saya adalah mahasiswa Teknik Informatika di Universitas
+                        Madura (UNIRA). Saya tertarik untuk mempelajari teknologi
+                        dan pemrograman serta mencoba membuat berbagai proyek
+                        yang dapat menambah pengalaman saya.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🚀</div>
+
+                    <h3>Terus Belajar</h3>
+
+                    <p>
+                        Saya masih terus belajar untuk meningkatkan kemampuan
+                        dalam pemrograman, pengembangan sistem informasi,
+                        Git/GitHub, dan teknologi lainnya yang relevan dengan
+                        bidang Informatika.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         4. RIWAYAT PENDIDIKAN
+    ========================== -->
+    <section id="pendidikan">
+        <div class="container">
+
+            <div class="section-title">
+                <div class="terminal-label">$ education --list</div>
+                <h2>Riwayat Pendidikan</h2>
+                <p>Perjalanan pendidikan dari terbaru hingga terlama.</p>
+            </div>
+
+            <div class="card table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Tahun</th>
+                            <th>Sekolah / Perguruan Tinggi</th>
+                            <th>Jurusan</th>
+                            <th>Pencapaian</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>2025–Sekarang</td>
+                            <td>Universitas Madura (UNIRA)</td>
+                            <td>Teknik Informatika</td>
+                            <td>Aktif belajar dan mengerjakan proyek bidang Informatika</td>
+                        </tr>
+
+                        <tr>
+                            <td>2022–2025</td>
+                            <td>SMK Plus Wali Songo</td>
+                            <td>—</td>
+                            <td>Menyelesaikan pendidikan SMK</td>
+                        </tr>
+
+                        <tr>
+                            <td>Sebelumnya</td>
+                            <td>MTs Bustanul Ulum</td>
+                            <td>—</td>
+                            <td>Menyelesaikan pendidikan tingkat MTs</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         5. MOTIVASI HIDUP
+    ========================== -->
+    <section id="motivasi">
+        <div class="container">
+
+            <div class="section-title">
+                <div class="terminal-label">$ echo "motivasi"</div>
+                <h2>Motivasi Hidup</h2>
+                <p>Alasan saya untuk terus belajar dan berkembang.</p>
+            </div>
+
+            <div class="quote-box">
+
+                <p>
+                    Saya ingin terus belajar di bidang Informatika dan bisa
+                    membuat teknologi yang bermanfaat untuk orang lain.
+                    Saya juga ingin membanggakan keluarga dengan menjadi orang
+                    yang berhasil melalui pendidikan dan kemampuan yang saya pelajari.
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         6. KEMAMPUAN TEKNOLOGI
+    ========================== -->
+    <section id="skill">
+        <div class="container">
+
+            <div class="section-title">
+                <div class="terminal-label">$ skills --show</div>
+                <h2>Kemampuan Teknologi</h2>
+                <p>Teknologi yang sudah dikuasai dan sedang dipelajari.</p>
+            </div>
+
+            <div class="card">
+
+                <div class="skills">
+
+                    <div>
+                        <div class="skill-head">
+                            <span>HTML / CSS</span>
+                            <span>Menengah</span>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 65%;"></div>
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <div class="skill-head">
+                            <span>JavaScript</span>
+                            <span>Pemula</span>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 35%;"></div>
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <div class="skill-head">
+                            <span>Dart / Flutter</span>
+                            <span>Pemula</span>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 30%;"></div>
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <div class="skill-head">
+                            <span>Git / GitHub</span>
+                            <span>Pemula</span>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 35%;"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="badge-container">
+
+                    <span class="badge">HTML</span>
+                    <span class="badge">CSS</span>
+                    <span class="badge">JavaScript</span>
+                    <span class="badge">Dart</span>
+                    <span class="badge">Flutter</span>
+                    <span class="badge">Git</span>
+                    <span class="badge">GitHub</span>
+
+                </div>
+
+
+                <div style="margin-top: 25px;">
+
+                    <h3 style="margin-bottom: 10px;">
+                        📚 Sedang Dipelajari
+                    </h3>
+
+                    <p style="color: var(--text-secondary);">
+                        PHP & MySQL, Python, dan pengembangan sistem informasi.
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         7. PROYEK
+    ========================== -->
+    <section id="proyek">
+        <div class="container">
+
+            <div class="section-title">
+                <div class="terminal-label">$ projects --list</div>
+                <h2>Proyek yang Telah Dibuat</h2>
+                <p>Beberapa proyek yang pernah saya kerjakan.</p>
+            </div>
+
+
+            <div class="grid-2">
+
+                <div class="card project-card">
+
+                    <div class="card-icon">🖥️</div>
+
+                    <h3>SIMAT — Sistem Informasi Akademik</h3>
+
+                    <p>
+                        SIMAT adalah proyek sistem informasi akademik yang
+                        dibuat untuk membantu pengelolaan data mahasiswa,
+                        dosen, mata kuliah, jadwal, KRS, dan nilai.
+                        Proyek ini dibuat menggunakan PHP dan MySQL
+                        dengan tampilan berbasis Bootstrap.
+                    </p>
+
+                    <div class="project-info">
+
+                        <span>
+                            <strong>Peran:</strong>
+                            Programmer / Pengembang
+                        </span>
+
+                        <span>
+                            <strong>Teknologi:</strong>
+                            PHP, MySQL, Bootstrap
+                        </span>
+
+                    </div>
+
+                    <span class="badge">
+                        Project Informatika
+                    </span>
+
+                </div>
+
+
+                <div class="card project-card">
+
+                    <div class="card-icon">🌐</div>
+
+                    <h3>My Profile</h3>
+
+                    <p>
+                        My Profile merupakan proyek profil pribadi yang dibuat
+                        untuk tugas Pertemuan 1 Pemrograman Platform.
+                        Proyek ini digunakan sebagai portofolio dan tempat
+                        menyimpan hasil tugas selama satu semester.
+                    </p>
+
+                    <div class="project-info">
+
+                        <span>
+                            <strong>Peran:</strong>
+                            Developer
+                        </span>
+
+                        <span>
+                            <strong>Teknologi:</strong>
+                            HTML, CSS, Git, GitHub
+                        </span>
+
+                    </div>
+
+                    <a href="https://github.com/080-Faruk/My-Profile"
+                       target="_blank"
+                       class="btn btn-primary">
+                        Lihat Repository →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         8. BUKTI COMMIT
+    ========================== -->
+    <section id="commit">
+        <div class="container">
+
+            <div class="section-title">
+                <div class="terminal-label">$ git log --oneline</div>
+                <h2>Bukti Commit</h2>
+                <p>Riwayat perubahan proyek pada GitHub.</p>
+            </div>
+
+
+            <div class="terminal">
+
+                <div class="terminal-header">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <div class="terminal-body">
+
+                    <div>
+                        <span class="cyan">$</span>
+                        git log --oneline -5
+                    </div>
+
+                    <br>
+
+                    <!--
+                        Setelah membuat commit asli,
+                        GANTI contoh hash di bawah dengan
+                        hasil git log milik kamu.
+                    -->
+
+                    <div class="commit-line">
+                        <span class="commit-hash">xxxxxxx</span>
+                        <span class="commit-message">
+                            Tambah informasi kampus
+                        </span>
+                    </div>
+
+                    <div class="commit-line">
+                        <span class="commit-hash">xxxxxxx</span>
+                        <span class="commit-message">
+                            Tambah informasi biodata
+                        </span>
+                    </div>
+
+                    <div class="commit-line">
+                        <span class="commit-hash">xxxxxxx</span>
+                        <span class="commit-message">
+                            Tes commit pertama
+                        </span>
+                    </div>
+
+                    <br>
+
+                    <div>
+                        <span class="green">
+                            ✓ Riwayat commit tersimpan di GitHub
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div style="text-align:center; margin-top:25px;">
+
+                <a href="https://github.com/080-Faruk"
+                   target="_blank"
+                   class="btn btn-primary">
+                    🔗 Lihat Profil GitHub
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         KONTAK
+    ========================== -->
+    <section id="kontak">
+        <div class="container">
+
+            <div class="section-title">
+                <div class="terminal-label">$ contact --info</div>
+                <h2>Kontak & Tautan</h2>
+                <p>Beberapa tautan yang berhubungan dengan profil saya.</p>
+            </div>
+
+
+            <div class="contact-grid">
+
+                <div class="card contact-card">
+                    <div class="card-icon">📧</div>
+                    <h3>Email</h3>
+                    <br>
+                    <a href="mailto:satpol913@gmail.com">
+                        satpol913@gmail.com
+                    </a>
+                </div>
+
+
+                <div class="card contact-card">
+                    <div class="card-icon">💻</div>
+                    <h3>GitHub</h3>
+                    <br>
+                    <a href="https://github.com/080-Faruk"
+                       target="_blank">
+                        github.com/080-Faruk
+                    </a>
+                </div>
+
+
+                <div class="card contact-card">
+                    <div class="card-icon">📁</div>
+                    <h3>Repository</h3>
+                    <br>
+                    <a href="https://github.com/080-Faruk/My-Profile"
+                       target="_blank">
+                        My Profile
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer>
+
+        <p>
+            Dibuat dengan ♥ oleh <strong>080-Faruk</strong>
+            — Pertemuan 1 Pemrograman Platform
+        </p>
+
+        <div class="footer-links">
+
+            <!--
+                GANTI LINK_VIDEO dengan link video
+                tugas kamu setelah video diupload.
+            -->
+            <a href="LINK_VIDEO"
+               target="_blank">
+                🎥 Video Tugas
+            </a>
+
+            <a href="https://github.com/080-Faruk/My-Profile"
+               target="_blank">
+                💻 Repository
+            </a>
+
+            <a href="https://github.com/080-Faruk"
+               target="_blank">
+                👤 Profil GitHub
+            </a>
+
+        </div>
+
+        <p style="margin-top:20px; font-size:13px;">
+            © 2026 Mohammad Faruq. Dibuat dengan HTML & CSS.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         DARK / LIGHT MODE
+    ========================== -->
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle("light");
+
+            const isLight =
+                document.body.classList.contains("light");
+
+            localStorage.setItem(
+                "theme",
+                isLight ? "light" : "dark"
+            );
+        }
+
+        window.addEventListener("DOMContentLoaded", function () {
+
+            const savedTheme =
+                localStorage.getItem("theme");
+
+            if (savedTheme === "light") {
+                document.body.classList.add("light");
+            }
+
+        });
+    </script>
+
+</body>
+</html>
+<!-- Git Commit Log Section -->
+        <section class="mb-12">
+            <h2 class="text-xl font-mono text-cyan-400 mb-4 flex items-center gap-2">
+                <span class="text-green-400">$</span> git log --oneline
+            </h2>
+            <div class="bg-gray-900 border border-gray-800 rounded-lg p-4 font-mono text-sm space-y-3">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-gray-300 hover:bg-gray-800/50 p-2 rounded transition">
+                    <div class="flex items-center gap-3">
+                        <span class="text-yellow-400">c8f9a2b</span>
+                        <span class="text-gray-400">feat: implement dark/light mode toggle with smooth transition</span>
+                    </div>
+                    <span class="text-xs text-gray-500">2 hours ago</span>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-gray-300 hover:bg-gray-800/50 p-2 rounded transition">
+                    <div class="flex items-center gap-3">
+                        <span class="text-yellow-400">3b4e1f0</span>
+                        <span class="text-gray-400">refactor: optimize terminal typing effect and responsiveness</span>
+                    </div>
+                    <span class="text-xs text-gray-500">Yesterday</span>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-gray-300 hover:bg-gray-800/50 p-2 rounded transition">
+                    <div class="flex items-center gap-3">
+                        <span class="text-yellow-400">9a7d2c1</span>
+                        <span class="text-gray-400">chore: initialize portfolio repository and base styles</span>
+                    </div>
+                    <span class="text-xs text-gray-500">3 days ago</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact / Social Links Section -->
+        <section class="mb-8">
+            <h2 class="text-xl font-mono text-cyan-400 mb-4 flex items-center gap-2">
+                <span class="text-green-400">$</span> cat contact.txt
+            </h2>
+            <div class="bg-gray-900 border border-gray-800 rounded-lg p-6 font-mono text-sm">
+                <p class="text-gray-300 mb-4">Let's connect! You can reach out to me via any of the channels below:</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    <a href="mailto:faruq@example.com" class="flex items-center gap-3 p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 rounded-lg text-gray-200 transition">
+                        <span class="text-cyan-400">📧</span>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://github.com/" target="_blank" class="flex items-center gap-3 p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 rounded-lg text-gray-200 transition">
+                        <span class="text-purple-400">💻</span>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://linkedin.com/" target="_blank" class="flex items-center gap-3 p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 rounded-lg text-gray-200 transition">
+                        <span class="text-blue-400">💼</span>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 py-6 text-center font-mono text-xs text-gray-500">
+        <p>&copy; 2026 Mohammad Faruq. Built with Tailwind CSS & JavaScript.</p>
+    </footer>
+
+    <!-- JavaScript for Theme Toggle and Interactions -->
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        
+        // Simple toggle logic example if needed
+        themeToggleBtn?.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+    </script>
+</body>
+</html>
